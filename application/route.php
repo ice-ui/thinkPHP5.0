@@ -17,5 +17,6 @@ return [
         ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
         ':name' => ['index/hello', ['method' => 'post']],
     ],
-
+    //添加路由规则路由到index控制器的hello方法
+    'hello/:name' => 'index/index/hello',
 ];

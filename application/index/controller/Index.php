@@ -11,7 +11,7 @@ class Index
           return 'index';
         }
 
-//        public function hello($name = 'world'){
-//            return 'Hello,' . $name . '!';
-//        }
+        public function hello($name = 'world',$city=''){
+          return 'Hello,' . $name . '! You come from '. $city .'.' ;
+     }
 }
