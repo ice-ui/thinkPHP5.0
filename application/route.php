@@ -24,10 +24,22 @@ return [
     //'hello/[:name]' => 'index/hello'
 
     //完整匹配,表示当前路由规则需要完整匹配:http://tp5/public/hello或着http://tp5/public/hello/thinkphp
-    'hello/[:name]$' => 'index/hello'
+    //'hello/[:name]$' => 'index/hello',
 
     //闭包定义
     //'hello/:name' => function($name){
     //     return 'Hello,' . $name . '!';
     //}
+
+    //对变量的规则进行定义，对变量进行规则约束，变量规则使用正则表达式进行定义:http://localhost:8888/tp5/public/blog/thinkphp
+    //    'blog/:year/:month' => ['blog/archive',['method' => 'get'],['year' => '\d{4}', 'month' => '\d{2}']],
+    //    'blog/:id' => ['blog/get', ['method' => 'get'], ['id' => '\d+']],
+    //    'blog/:name' => ['blog/read', ['method' => 'get'], ['name' => '\w+']]
+
+    //由于上面都含有blog，所以我们可以做路由简化
+    '[blog]'=>[
+       ':year/:month' => ['blog/archive',['method' => 'get'],['year' => '\d{4}', 'month' => '\d{2}']],
+       ':id' => ['blog/get', ['method' => 'get'], ['id' => '\d+']],
+        ':name' => ['blog/read', ['method' => 'get'], ['name' => '\w+']]
+    ]
 ];
