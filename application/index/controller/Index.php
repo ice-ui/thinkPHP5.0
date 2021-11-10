@@ -1,16 +1,27 @@
 <?php
 namespace app\index\controller;
 
-use think\Controller;
+//动态绑定属性
+//use app\index\model\User;
+//use think\Controller;
+//use think\Request;
+//use think\Session;
 //导入命名空间的类库
 
-class Index extends Controller
+class Index
 {
-    public function hello($name = 'World'){
-       // Request::instance()获取post、get、参数、表单上传的文件
-//        $request = Request::instance();
-        //获取当前URL地址  不含域名
-        echo 'url:' . $this->request->url() . '<br/>';
-        return 'Hello,' .$name . '!';
-    }
+//   public function _initialize(){
+//       $user = User::get(Session::get('user_id'));
+//       Request::instance() -> bind('user',$user);
+//   }
+
+//使用助手函数--->没有继承think\Controller也不想给操作方法添加额外的Request对象参数
+
+public function hello($name ='World'){
+
+    //获取当前url地址  不含域名
+    echo 'url:' .request() -> url() . '<br />';
+    return 'Hello,' .$name .'!';
+}
+
 }
