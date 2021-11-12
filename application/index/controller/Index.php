@@ -1,24 +1,25 @@
 <?php
+
 namespace app\index\controller;
 
-use think\Request;
-class Index{
+
+use think\Db;
+
+class Index
+{
 
 
-public function hello(Request $request){
-    //http://localhost:8888/tp5/public/index/index/hello.html?test=add&name=thinkphp
-    echo '请求参数:';
-//    dump($request -> param());
-//    echo 'name:' .$request->param('name');
-
-    //使用input函数来简化请求，会自动判断当前的请求
-//    dump(input());
-//    echo 'name:' .input('name');
-
-    //param方法获取的参数会自动判断当前的请求：路由变量>当前请求变量>$GET变量
-
-    echo 'name:' .$request->param('name','World','strtolower');
-    echo '<br/>test:' .$request->param('test','thinkphp','strtoupper');
-  }
+    public function hello()
+    {
+        $result = Db::execute('delete from  think_data where id = 1');
+        dump($result);
+        //查询数据库中id等于2的元素
+        //find方法用于查找满足条件的第一个记录，如果查询成功，返回的是一个一维数组，没有满足条件返回Null。
+        $result1 = Db::table('think_data')->where('id', 2)->find();
+        dump($result1);
+        //select用于查询数据库，如果查询成功，返回的是一个二维数组，没有满足条件的话则返回空数组
+        $result2 = Db::table('think_data')->where('id','>=',1)->limit(10)->select();
+        dump($result2);
+    }
 
 }
